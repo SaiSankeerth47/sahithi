@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,6 +27,8 @@ SECRET_KEY = 'django-insecure-wb$95w$w4%ffjc1#3^9%n+!tlpt3)if75+c)cy%1x&s-z6f$r&
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+#ALLOWED_HOSTS = ["sankeerth47.pythonanywhere.com"]
 
 
 # Application definition
@@ -52,10 +55,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'sahithi.urls'
 
+TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
+#STATIC_DIR = os.path.join(BASE_DIR, "static")
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,6 +126,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'assests')
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
